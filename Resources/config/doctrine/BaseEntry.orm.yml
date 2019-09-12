@@ -1,0 +1,12 @@
+Kna\AccountingBundle\Entity\BaseEntry:
+  type: mappedSuperclass
+
+  fields:
+    createdAt:
+      type: datetime
+    description:
+      type: string
+
+  embedded:
+    amount:
+      class: Money\Money

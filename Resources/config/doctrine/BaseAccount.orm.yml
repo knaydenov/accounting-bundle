@@ -1,0 +1,8 @@
+Kna\AccountingBundle\Entity\BaseAccount:
+  type: mappedSuperclass
+
+  embedded:
+    currency:
+      class: Money\Currency
+    balance:
+      class: Money\Money

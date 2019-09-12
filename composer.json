@@ -1,0 +1,32 @@
+{
+  "name": "kna/accounting-bundle",
+  "description": "This Bundle provides event-driven accounting implementation",
+  "type": "symfony-bundle",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Klim Naydenov",
+      "email": "knaydenov@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^7.2",
+    "symfony/framework-bundle": ">=4.0  <5.0",
+    "moneyphp/money": "^3.2",
+    "kna/money-bundle": "^1.0",
+    "symfony/translation": ">=4.0  <5.0"
+  },
+  "require-dev": {
+    "doctrine/orm": "^2.6",
+    "doctrine/doctrine-bundle": "^1.11"
+  },
+  "suggest": {
+    "doctrine/doctrine-bundle": "For integration with Doctrine",
+    "doctrine/orm": "For integration with Doctrine ORM"
+  },
+  "autoload": {
+    "psr-4": {
+      "Kna\\AccountingBundle\\": ""
+    }
+  }
+}

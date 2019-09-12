@@ -1,0 +1,12 @@
+services:
+  Kna\AccountingBundle\EventListener\DoctrineMappingSubscriber:
+    arguments:
+    - '%kna_accounting.account_class%'
+    - '%kna_accounting.entry_class%'
+    - '%kna_accounting.event_class%'
+    - '%kna_accounting.event_discriminator_map%'
+    tags:
+    - { name: doctrine.event_subscriber, connection: default }
+  Kna\AccountingBundle\EventListener\EntrySubscriber:
+    tags:
+      - { name: doctrine.event_subscriber, connection: default }

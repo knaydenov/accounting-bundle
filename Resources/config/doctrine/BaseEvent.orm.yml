@@ -1,0 +1,14 @@
+Kna\AccountingBundle\Entity\BaseEvent:
+  type: mappedSuperclass
+
+  fields:
+    occurredAt:
+      type: datetime
+    noticedAt:
+      type: datetime
+    processed:
+      type: boolean
+
+  embedded:
+    amount:
+      class: Money\Money

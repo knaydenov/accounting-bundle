@@ -1,0 +1,50 @@
+services:
+  Kna\AccountingBundle\Accounting\EventProviderRegistry:
+
+  Kna\AccountingBundle\Accounting\EventFactory:
+    arguments:
+    - '@kna_accounting.event_provider_registry'
+    - '%kna_accounting.event_discriminator_map%'
+
+  Kna\AccountingBundle\EventListener\EventSubscriber:
+    arguments:
+    - '@kna_accounting.entry_factory'
+    - '@doctrine.orm.entity_manager'
+    - '@event_dispatcher'
+    tags:
+    - { name: kernel.event_subscriber }
+
+  Kna\AccountingBundle\Command\ProcessEventsCommand:
+    calls:
+    - method: setEntityManager
+      arguments:
+      - '@doctrine.orm.entity_manager'
+    - method: setEventManager
+      arguments:
+      - '@kna_accounting.event_manager'
+    - method: setEventClass
+      arguments:
+      - '%kna_accounting.event_class%'
+    - method: setLogger
+      arguments:
+      - '@?logger'
+    tags:
+    - { name: console.command, command: 'kna_accounting:process-events' }
+
+  Kna\AccountingBundle\Accounting\EventManager:
+    arguments:
+    - '@doctrine.orm.entity_manager'
+    - '@event_dispatcher'
+    - '@kna_accounting.event_factory'
+
+  kna_accounting.event_provider_registry:
+    public: true
+    alias: Kna\AccountingBundle\Accounting\EventProviderRegistry
+
+  kna_accounting.event_factory:
+    public: true
+    alias: Kna\AccountingBundle\Accounting\EventFactory
+
+  kna_accounting.event_manager:
+    public: true
+    alias: Kna\AccountingBundle\Accounting\EventManager

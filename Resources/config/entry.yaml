@@ -1,0 +1,14 @@
+services:
+  Kna\AccountingBundle\Accounting\EntryProviderRegistry:
+
+  Kna\AccountingBundle\Accounting\EntryFactory:
+    arguments:
+    - '@kna_accounting.entry_provider_registry'
+
+  kna_accounting.entry_provider_registry:
+    public: true
+    alias: Kna\AccountingBundle\Accounting\EntryProviderRegistry
+
+  kna_accounting.entry_factory:
+    public: true
+    alias: Kna\AccountingBundle\Accounting\EntryFactory
