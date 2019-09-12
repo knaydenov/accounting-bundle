@@ -126,7 +126,7 @@ class SaleEvent extends Event
 
 ```php
 <?php
-namespace App\Entity\Accounting;
+namespace App\Accounting;
 
 use App\Entity\Payment;
 use App\Entity\Order;
@@ -177,7 +177,7 @@ class DefaultEventProvider extends BaseEventProvider
 
 ```php
 <?php
-namespace App\Entity\Accounting;
+namespace App\Accounting;
 
 use App\Entity\PaymentEvent;
 use App\Entity\SaleEvent;
