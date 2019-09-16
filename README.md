@@ -22,6 +22,9 @@ kna_accounting:
     class: App/Entity/Entry # default
   event:
     class: App/Entity/Event # default
+    discriminator_type: string #default
+    discriminator_name: type #default
+    discriminator_length: 255 #default
     discriminator_map:
       App/Entity/PaymentEvent: payment
       App/Entity/SaleEvent: sale
