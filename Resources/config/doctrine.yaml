@@ -5,6 +5,9 @@ services:
     - '%kna_accounting.entry_class%'
     - '%kna_accounting.event_class%'
     - '%kna_accounting.event_discriminator_map%'
+    - '%kna_accounting.event_discriminator_name%'
+    - '%kna_accounting.event_discriminator_type%'
+    - '%kna_accounting.event_discriminator_length%'
     tags:
     - { name: doctrine.event_subscriber, connection: default }
   Kna\AccountingBundle\EventListener\EntrySubscriber:

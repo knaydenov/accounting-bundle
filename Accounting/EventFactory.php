@@ -27,12 +27,12 @@ class EventFactory
 
     /**
      * @param string|EventInterface $event
-     * @return string
+     * @return string|int|null
      */
-    protected function getName($event): string
+    protected function getName($event)
     {
-        $class = $event instanceof EventInterface ? get_class($event) : $event;
-        return array_flip($this->eventDiscriminatorMap)[(string) $class] ?? 'unknown';
+        $class = $event instanceof EventInterface ? get_class($event) : (string) $event;
+        return array_key_exists($class, $this->eventDiscriminatorMap) ? $this->eventDiscriminatorMap[$class] : null;
     }
 
     /**

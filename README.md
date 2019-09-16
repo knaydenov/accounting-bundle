@@ -20,8 +20,8 @@ kna_accounting:
   entry_class: App/Entity/Entry # default
   event_class: App/Entity/Event # default
   event_discriminator_map:
-    payment: App/Entity/PaymentEvent
-    sale: App/Entity/SaleEvent
+    App/Entity/PaymentEvent: payment
+    App/Entity/SaleEvent: sale
 ```
 
 ### Create base entities

@@ -27,17 +27,38 @@ class DoctrineMappingSubscriber implements  EventSubscriber
      */
     protected $eventDiscriminatorMap;
 
+    /**
+     * @var string
+     */
+    protected $discriminatorName;
+
+    /**
+     * @var string
+     */
+    protected $discriminatorType;
+
+    /**
+     * @var string|null
+     */
+    protected $discriminatorLength;
+
     public function __construct(
         string $accountClass,
         string $entryClass,
         string $eventClass,
-        array $eventDiscriminatorMap
+        array $eventDiscriminatorMap,
+        string $discriminatorName,
+        string $discriminatorType,
+        ?string $discriminatorLength
     )
     {
         $this->accountClass = $accountClass;
         $this->entryClass = $entryClass;
         $this->eventClass = $eventClass;
         $this->eventDiscriminatorMap = $eventDiscriminatorMap;
+        $this->discriminatorName = $discriminatorName;
+        $this->discriminatorType = $discriminatorType;
+        $this->discriminatorLength = $discriminatorLength;
     }
 
     /**
@@ -84,10 +105,10 @@ class DoctrineMappingSubscriber implements  EventSubscriber
 
         $builder
             ->setJoinedTableInheritance()
-            ->setDiscriminatorColumn('type', 'string')
+            ->setDiscriminatorColumn($this->discriminatorName, $this->discriminatorType, $this->discriminatorLength)
         ;
 
-        foreach ($this->eventDiscriminatorMap as $name =>$class) {
+        foreach ($this->eventDiscriminatorMap as $class => $name) {
             $builder->addDiscriminatorMapClass($name, $class);
         }
 
