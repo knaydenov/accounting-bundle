@@ -25,10 +25,13 @@ class KnaAccountingExtension extends Extension
 
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
-        $container->setParameter('kna_accounting.account_class', $config['account_class']);
-        $container->setParameter('kna_accounting.entry_class', $config['entry_class']);
-        $container->setParameter('kna_accounting.event_class', $config['event_class']);
-        $container->setParameter('kna_accounting.event_discriminator_map', $config['event_discriminator_map']);
+        $container->setParameter('kna_accounting.account_class', $config['account']['class']);
+        $container->setParameter('kna_accounting.entry_class', $config['entry']['class']);
+        $container->setParameter('kna_accounting.event_class', $config['event']['class']);
+        $container->setParameter('kna_accounting.event_discriminator_map', $config['event']['discriminator_map']);
+        $container->setParameter('kna_accounting.event_discriminator_name', $config['event']['discriminator_name']);
+        $container->setParameter('kna_accounting.event_discriminator_type', $config['event']['discriminator_type']);
+        $container->setParameter('kna_accounting.event_discriminator_length', $config['event']['discriminator_length']);
 
         $container
             ->registerForAutoconfiguration(EntryProviderInterface::class)
