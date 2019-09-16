@@ -16,12 +16,15 @@ composer require kna/accounting-bundle
 // config/packages/kna_accounting.yaml
 
 kna_accounting:
-  account_class: App/Entity/Account # default
-  entry_class: App/Entity/Entry # default
-  event_class: App/Entity/Event # default
-  event_discriminator_map:
-    App/Entity/PaymentEvent: payment
-    App/Entity/SaleEvent: sale
+  account:
+    class: App/Entity/Account # default
+  entry:
+    class: App/Entity/Entry # default
+  event:
+    class: App/Entity/Event # default
+    discriminator_map:
+      App/Entity/PaymentEvent: payment
+      App/Entity/SaleEvent: sale
 ```
 
 ### Create base entities
