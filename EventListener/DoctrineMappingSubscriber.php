@@ -108,7 +108,7 @@ class DoctrineMappingSubscriber implements  EventSubscriber
             ->setDiscriminatorColumn($this->discriminatorName, $this->discriminatorType, $this->discriminatorLength)
         ;
 
-        foreach ($this->eventDiscriminatorMap as $class => $name) {
+        foreach ($this->eventDiscriminatorMap as $name => $class) {
             $builder->addDiscriminatorMapClass($name, $class);
         }
 
