@@ -32,7 +32,8 @@ class EventFactory
     protected function getName($event)
     {
         $class = $event instanceof EventInterface ? get_class($event) : (string) $event;
-        return array_key_exists($class, $this->eventDiscriminatorMap) ? $this->eventDiscriminatorMap[$class] : null;
+        $name = array_search($class, $this->eventDiscriminatorMap);
+        return ($name !== false) ? $name : null ;
     }
 
     /**
